@@ -28,6 +28,7 @@ export const CustomDragLayer: React.FC = () => {
     isDragging: monitor.isDragging(),
   }));
 
+  // fix bug move task logic from book "P.178"
   const type = item?.type;
 
   return isDragging ? (

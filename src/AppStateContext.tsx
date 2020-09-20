@@ -141,9 +141,10 @@ const appStateReducer = (state: AppState, action: Action): AppState => {
       const soruceListIndex = findItemIndexById(state.lists, sourceColumn);
       const targetListIndex = findItemIndexById(state.lists, targetColumn);
 
-      // bug-test
+      // fix bug move task logic from book "P.177"
       const item = state.lists[soruceListIndex].tasks.splice(dragIndex, 1)[0];
 
+      // fix bug move task logic from book "P.177"
       state.lists[targetListIndex].tasks.splice(hoverIndex, 0, item);
 
       return {

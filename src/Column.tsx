@@ -8,14 +8,16 @@ import { useAppState } from "./AppStateContext";
 interface ColumnsProps {
   text: string;
   index: number;
+  id: string;
 }
 
 export const Column = ({
   text,
   index,
+  id,
   children,
 }: React.PropsWithChildren<ColumnsProps>) => {
-  const { state } = useAppState();
+  const { state, dispatch } = useAppState();
 
   return (
     <ColumnContainer>
@@ -24,7 +26,9 @@ export const Column = ({
         <Card text={task.text} key={task.id} />
       ))}
       <AddNewItem
-        onAdd={console.log}
+        onAdd={(text) =>
+          dispatch({ type: "ADD_TASK", payload: { text, taskId: id } })
+        }
         toggleButtonText="+ Add anther task"
         dark
       />

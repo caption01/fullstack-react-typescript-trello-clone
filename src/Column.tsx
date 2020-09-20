@@ -52,8 +52,14 @@ export const Column = ({
       isPreview={isPreview}
     >
       <ColumnTitle>{text}</ColumnTitle>
-      {state.lists[index].tasks.map((task) => (
-        <Card text={task.text} key={task.id} />
+      {state.lists[index].tasks.map((task, i) => (
+        <Card
+          id={task.id}
+          index={i}
+          columnId={id}
+          text={task.text}
+          key={task.id}
+        />
       ))}
       <AddNewItem
         onAdd={(text) =>
